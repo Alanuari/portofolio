@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Penjualan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        .chart-container {
+            width: 90%;
+            height: 500px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Laporan Penjualan Bulanan BOCAY</h2>
+    <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <script>
+        // Data penjualan
+        const dataPenjualan = [120, 150, 180, 200, 170, 250, 300, 280, 220, 260, 230, 310];
+        const namaBulan = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+        // Inisialisasi Chart.js
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: namaBulan,
+                datasets: [{
+                    label: 'Penjualan (unit)',
+                    data: dataPenjualan,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
